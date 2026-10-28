@@ -23,25 +23,54 @@ func main() {
 
 		msotrarmenu()
 
-		fmt.Println("Escolha uma opcao:")
+		fmt.Println("Escolha uma opção:")
 		fmt.Scan(&opcao)
 
 		switch opcao {
 
 		case 1:
-			fmt.Println("Seu saldo atual e de R$", saldo)
+			fmt.Println("Seu saldo atual e de R$", saldo, "\n")
 
 		case 2:
+
 			fmt.Println("Qual sera o valor do deposito:")
 			fmt.Scan(&deposito)
 
-			saldo = saldo + deposito
+			if deposito > 0 {
+
+				saldo = saldo + deposito
+
+				fmt.Println("Deposito realizado com sucesso!")
+
+			} else {
+
+				fmt.Println("Valor invalido, insira outro valor!")
+			}
 
 		case 3:
+
 			fmt.Println("Qual o valor do saque:")
 			fmt.Scan(&saque)
 
-			saldo = saldo - saque
+			if saque > 0 {
+
+				if saldo >= saque {
+
+					saldo = saldo - saque
+
+					fmt.Println("Saque realizado com sucesso!")
+
+				} else {
+
+					fmt.Println("Saldo Insuficiente!")
+
+				}
+
+			} else {
+
+				fmt.Println("Saque Invalido!")
+
+			}
 
 		case 0:
 			fmt.Println("Saindo do Banco")
