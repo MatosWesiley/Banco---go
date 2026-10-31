@@ -29,7 +29,7 @@ func main() {
 		switch opcao {
 
 		case 1:
-			fmt.Println("Seu saldo atual e de R$", saldo, "\n")
+			fmt.Printf("Seu saldo atual e de R$ %.2f\n\n", saldo)
 
 		case 2:
 
@@ -41,6 +41,7 @@ func main() {
 				saldo = saldo + deposito
 
 				fmt.Println("Deposito realizado com sucesso!")
+				fmt.Printf("Seu novo saldo e de R$ %.2f\n\n", saldo)
 
 			} else {
 
@@ -58,7 +59,8 @@ func main() {
 
 					saldo = saldo - saque
 
-					fmt.Println("Saque realizado com sucesso!")
+					fmt.Printf("Saque no valor de R$ %.2f ", saldo)
+					fmt.Print("realizado com sucesso!\n\n")
 
 				} else {
 
