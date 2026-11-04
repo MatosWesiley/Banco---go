@@ -16,7 +16,6 @@ func main() {
 
 	var saldo float64 = 0
 	var opcao int
-	var deposito float64
 	var saque float64
 
 	for {
@@ -29,24 +28,11 @@ func main() {
 		switch opcao {
 
 		case 1:
-			fmt.Printf("Seu saldo atual e de R$ %.2f\n\n", saldo)
+			consultarSaldo(saldo)
 
 		case 2:
 
-			fmt.Println("Qual sera o valor do deposito:")
-			fmt.Scan(&deposito)
-
-			if deposito > 0 {
-
-				saldo = saldo + deposito
-
-				fmt.Println("Deposito realizado com sucesso!")
-				fmt.Printf("Seu novo saldo e de R$ %.2f\n\n", saldo)
-
-			} else {
-
-				fmt.Println("Valor invalido, insira outro valor!")
-			}
+			saldo = realizarDeposito(saldo)
 
 		case 3:
 
@@ -59,7 +45,7 @@ func main() {
 
 					saldo = saldo - saque
 
-					fmt.Printf("Saque no valor de R$ %.2f ", saldo)
+					fmt.Printf("Saque no valor de R$ %.2f ", saque)
 					fmt.Print("realizado com sucesso!\n\n")
 
 				} else {
@@ -83,4 +69,31 @@ func main() {
 		}
 
 	}
+}
+
+func consultarSaldo(saldo float64) {
+
+	fmt.Printf("Seu saldo atual é de R$ %.2f\n\n", saldo)
+}
+
+func realizarDeposito(saldo float64) float64 {
+
+	var deposito float64
+
+	fmt.Println("Qual sera o valor do deposito:")
+	fmt.Scan(&deposito)
+
+	if deposito > 0 {
+
+		saldo = saldo + deposito
+
+		fmt.Println("Deposito realizado com sucesso!")
+		fmt.Printf("Seu novo saldo e de R$ %.2f\n\n", saldo)
+
+	} else {
+
+		fmt.Println("Valor invalido, insira outro valor!")
+	}
+
+	return saldo
 }
