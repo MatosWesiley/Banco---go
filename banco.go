@@ -16,7 +16,6 @@ func main() {
 
 	var saldo float64 = 0
 	var opcao int
-	var saque float64
 
 	for {
 
@@ -36,29 +35,7 @@ func main() {
 
 		case 3:
 
-			fmt.Println("Qual o valor do saque:")
-			fmt.Scan(&saque)
-
-			if saque > 0 {
-
-				if saldo >= saque {
-
-					saldo = saldo - saque
-
-					fmt.Printf("Saque no valor de R$ %.2f ", saque)
-					fmt.Print("realizado com sucesso!\n\n")
-
-				} else {
-
-					fmt.Println("Saldo Insuficiente!")
-
-				}
-
-			} else {
-
-				fmt.Println("Saque Invalido!")
-
-			}
+			saldo = realizarSaque(saldo)
 
 		case 0:
 			fmt.Println("Saindo do Banco")
@@ -96,4 +73,36 @@ func realizarDeposito(saldo float64) float64 {
 	}
 
 	return saldo
+}
+
+func realizarSaque(saldo float64) float64 {
+
+	var saque float64
+
+	fmt.Println("Qual o valor do saque:")
+	fmt.Scan(&saque)
+
+	if saque > 0 {
+
+		if saldo >= saque {
+
+			saldo = saldo - saque
+
+			fmt.Printf("Saque no valor de R$ %.2f ", saque)
+			fmt.Print("realizado com sucesso!\n\n")
+
+		} else {
+
+			fmt.Println("Saldo Insuficiente!")
+
+		}
+
+	} else {
+
+		fmt.Println("Saque Invalido!")
+
+	}
+
+	return saldo
+
 }
